@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary-50: 238 242 255;
+    --color-primary-100: 224 231 255;
+    --color-primary-200: 199 210 254;
+    --color-primary-300: 165 180 252;
+    --color-primary-400: 129 140 248;
+    --color-primary-500: 99 102 241;
+    --color-primary-600: 79 70 229;
+    --color-primary-700: 67 56 202;
+    --color-primary-800: 55 48 163;
+    --color-primary-900: 49 46 129;
+    --color-primary-950: 30 27 75;
+
+    --color-secondary-50: 240 253 250;
+    --color-secondary-100: 204 251 241;
+    --color-secondary-200: 153 246 228;
+    --color-secondary-300: 94 234 212;
+    --color-secondary-400: 45 212 191;
+    --color-secondary-500: 20 184 166;
+    --color-secondary-600: 13 148 136;
+    --color-secondary-700: 15 118 110;
+    --color-secondary-800: 17 94 89;
+    --color-secondary-900: 19 78 74;
+    --color-secondary-950: 4 47 46;
+
+    --color-accent-50: 255 247 237;
+    --color-accent-100: 255 237 213;
+    --color-accent-200: 254 215 170;
+    --color-accent-300: 253 186 116;
+    --color-accent-400: 251 146 60;
+    --color-accent-500: 249 115 22;
+    --color-accent-600: 234 88 12;
+    --color-accent-700: 194 65 12;
+    --color-accent-800: 154 52 18;
+    --color-accent-900: 124 45 18;
+    --color-accent-950: 67 20 7;
+
+    --color-success-50: 240 253 244;
+    --color-success-100: 220 252 231;
+    --color-success-200: 187 247 208;
+    --color-success-300: 134 239 172;
+    --color-success-400: 74 222 128;
+    --color-success-500: 34 197 94;
+    --color-success-600: 22 163 74;
+    --color-success-700: 21 128 61;
+    --color-success-800: 22 101 52;
+    --color-success-900: 20 83 45;
+    --color-success-950: 5 46 22;
+
+    --color-warning-50: 254 252 232;
+    --color-warning-100: 254 249 195;
+    --color-warning-200: 254 240 138;
+    --color-warning-300: 253 224 71;
+    --color-warning-400: 250 204 21;
+    --color-warning-500: 234 179 8;
+    --color-warning-600: 202 138 4;
+    --color-warning-700: 161 98 7;
+    --color-warning-800: 133 77 14;
+    --color-warning-900: 113 63 18;
+    --color-warning-950: 66 32 6;
+
+    --color-error-50: 254 242 242;
+    --color-error-100: 254 226 226;
+    --color-error-200: 254 202 202;
+    --color-error-300: 252 165 165;
+    --color-error-400: 248 113 113;
+    --color-error-500: 239 68 68;
+    --color-error-600: 220 38 38;
+    --color-error-700: 185 28 28;
+    --color-error-800: 153 27 27;
+    --color-error-900: 127 29 29;
+    --color-error-950: 69 10 10;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  /* Smooth scrolling with support for older browsers */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @supports not (scroll-behavior: smooth) {
+    html {
+      overflow-behavior: auto;
+    }
+  }
+
+  /* Focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-600;
+  }
+  
+  .btn-secondary {
+    @apply bg-slate-200 text-slate-900 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600;
+  }
+  
+  .btn-danger {
+    @apply bg-error-600 text-white hover:bg-error-700;
+  }
+
+  .btn-success {
+    @apply bg-success-600 text-white hover:bg-success-700;
+  }
+
+  .input {
+    @apply block w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-slate-800 dark:border-slate-700 dark:text-white transition duration-150;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1;
+  }
+
+  .card {
+    @apply bg-white dark:bg-slate-800 rounded-lg shadow-md p-6;
+  }
+
+  .nav-link {
+    @apply px-3 py-2 rounded-md text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white transition-colors;
+  }
+
+  .nav-link-active {
+    @apply bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400;
+  }
+}
+
+/* Game grid animations */
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.flash-animation {
+  animation: flash 0.5s;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.pulse-animation {
+  animation: pulse 1.5s infinite ease-in-out;
+}
